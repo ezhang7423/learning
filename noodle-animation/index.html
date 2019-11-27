@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="anime.min.js"></script>
+    <style>
+    /* body, */
+/* html{
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background-color: #F6F4F2;
+} */
+
+.stagger-visualizer {
+  display: flex;
+  /*flex-wrap: wrap;*/
+  justify-content: center;
+  align-items: center;
+  width: 450px;
+  height: 450px;
+  margin-left: 20vw;
+}
+
+.stagger-visualizer div {
+  /*position: absolute;*/
+  width: 64px;
+  height: 128px;
+  border: 1px solid #373535;
+  background-color: #F6F4F2;
+    }
+    
+.loop{
+    margin: 0 30vw;
+}
+</style>
+</head>
+<body>
+    <div class="stagger-visualizer"></div>
+
+    <button onclick="staggersAnimation.play()" class='loop btn btn-secondary'>Play Again</button>
+    <script>
+ const playAgain = document.querySelector('.loop')
+  const staggerVisualizerEl = document.querySelector('.stagger-visualizer');
+  const fragment = document.createDocumentFragment();
+  const numberOfElements = 81;
+
+  for (let i = 0; i < numberOfElements; i++) {
+    fragment.appendChild(document.createElement('div'));
+  }
+
+  staggerVisualizerEl.appendChild(fragment);
+
+  const staggersAnimation = anime.timeline({
+    targets: '.stagger-visualizer div',
+    easing: 'easeInOutSine',
+    delay: anime.stagger(50),
+    loop: false,
+    autoplay: false,
+    duration: 600,
+    loopComplete: (a) => console.log('end'),
+    //update: () => console.log(staggersAnimation.progress)
+  })
+  .add({
+    rotate: anime.stagger(3, {from: 'center', direction: 'reverse', easing: 'easeInSine'}),
+    translateX: 0,
+    translateY: 0,
+    delay: anime.stagger(10, {from: 'center'})
+  })
+  staggersAnimation.play();</script>
+</body>
+</html>
