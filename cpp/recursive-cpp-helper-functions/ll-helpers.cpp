@@ -93,10 +93,10 @@ void printLl(Node *head)
   cout << head->data << "->";
   printLl(head->next);
 }
-int main()
-{
-  node *head = 0;
-  // _addManyNodes(head, 15);
-  head = _addManyNodes(head, 1);
-  printLl(head);
-}
+// int main()
+// {
+//   node *head = 0;
+//   // _addManyNodes(head, 15);
+//   head = _addManyNodes(head, 1);
+//   printLl(head);
+// }
