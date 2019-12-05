@@ -84,13 +84,13 @@ Node *deleteVNodes(Node *head, int value)
   return head;
 }
 
-void printLl(node *head)
+void printLl(Node *head)
 {
   if (head == nullptr)
   {
-    return;
+    cout << "NULL" return;
   }
-  cout << head->value << endl;
+  cout << head->data << "->";
   printLl(head->next);
 }
 int main()
