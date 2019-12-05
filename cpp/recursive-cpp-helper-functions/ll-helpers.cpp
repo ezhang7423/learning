@@ -1,18 +1,11 @@
 #include <iostream>
 using namespace std;
 
-struct Node
+struct node
 {
-  Node *next;
-  long long data;
+  node *next;
+  long long value;
 };
-
-Node *addNodeFront(Node *head, long long value)
-{
-  Node *p = new Node{head, value};
-  head = p;
-  return head;
-}
 
 Node *addNodeBack(Node *head, long long value, Node *ogHead)
 {
@@ -25,6 +18,13 @@ Node *addNodeBack(Node *head, long long value, Node *ogHead)
     return ogHead;
   }
   return addNodeBack(head->next, value, ogHead);
+}
+
+node *addNodeFront(node *head, long long value)
+{
+  node *p = new node{head, value};
+  head = p;
+  return head;
 }
 
 long long pow(int base, long long power)
@@ -45,49 +45,26 @@ Node *_addManyNodes(Node *head, long long timesToCall)
   return _addManyNodes(head, timesToCall - 1);
 }
 
-void deleteVNodesHelper(Node *head, int value, Node *lastHead)
+// void _addManyNodes(node*& head, long long timesToCall){ //add function to act as operator
+//   if (timesToCall <= 0){
+//     return;
+//   }
+//   _addManyNodes(head, timesToCall-1);
+//   head = addNodeFront(head, timesToCall);
+// }
+void printLl(node *head)
 {
-  if (head->data == value)
-  {
-    lastHead->next = head->next;
-  }
-  if (!head->next)
+  if (head == nullptr)
   {
     return;
   }
-  if (head->data == value)
-    deleteVNodesHelper(head->next, value, lastHead);
-  else
-    deleteVNodesHelper(head->next, value, lastHead->next);
-}
-
-Node *deleteVNodes(Node *head, int value)
-{
-  if (head == nullptr)
-  {
-    return head;
-  }
-  deleteVNodesHelper(head->next, value, head);
-  //catch if value == first item
-  if (head->data == value)
-  {
-    return head->next;
-  }
-  return head;
-}
-
-void printLl(Node *head)
-{
-  if (head == nullptr)
-  {
-    cout << "NULL" return;
-  }
-  cout << head->data << "->";
+  cout << head->value << endl;
   printLl(head->next);
 }
-// int main(){
-//   Node* head = 0;
-//   // _addManyNodes(head, 15);
-//   head = _addManyNodes(head, 1);
-//   printLl(head);
-// }
+int main()
+{
+  node *head = 0;
+  // _addManyNodes(head, 15);
+  head = _addManyNodes(head, 1);
+  printLl(head);
+}
