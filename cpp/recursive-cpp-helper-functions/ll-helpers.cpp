@@ -52,6 +52,38 @@ Node *_addManyNodes(Node *head, long long timesToCall)
 //   _addManyNodes(head, timesToCall-1);
 //   head = addNodeFront(head, timesToCall);
 // }
+
+void deleteVNodesHelper(Node *head, int value, Node *lastHead)
+{
+  if (head->data == value)
+  {
+    lastHead->next = head->next;
+  }
+  if (!head->next)
+  {
+    return;
+  }
+  if (head->data == value)
+    deleteVNodesHelper(head->next, value, lastHead);
+  else
+    deleteVNodesHelper(head->next, value, lastHead->next);
+}
+
+Node *deleteVNodes(Node *head, int value)
+{
+  if (head == nullptr)
+  {
+    return head;
+  }
+  deleteVNodesHelper(head->next, value, head);
+  //catch if value == first item
+  if (head->data == value)
+  {
+    return head->next;
+  }
+  return head;
+}
+
 void printLl(node *head)
 {
   if (head == nullptr)
