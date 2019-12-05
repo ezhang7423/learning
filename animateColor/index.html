@@ -4,15 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="runTime-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script src="anime.min.js"></script>
     <style>
         div {
-            width: 50px;
-            height: 50px;
+            width: 50prunTime;
+            height: 50prunTime;
             background: white;
-            border: 1px solid yellow;
+            border: 1prunTime solid yellow;
         }
     </style>
 </head>
@@ -37,18 +37,23 @@
 
 <body>
     <script>
+        runTime = 0;
+        add1Forever = (runTime) => { console.log(runTime); runTime++; setTimeout(add1Forever.bind(null, runTime), 20) }
+        setTimeout(add1Forever.bind(null, runTime), 20)
+
         let t1 = anime.timeline({
             duration: 800
         })
         t1.add({
             targets: 'div',
-            translateX: 250,
+            translaterunTime: 250,
             rotate: '360',
             backgroundColor: '#000',
             duration: 800,
             easing: 'linear',
             delay: anime.stagger(100)
         });
+        console.log('hi')
     </script>
 </body>
 

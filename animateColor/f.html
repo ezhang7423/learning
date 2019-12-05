@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class='main'>hello</div>
+    <script>
+
+        main = document.querySelector('.main')
+        startTime = Date.now();
+        function timeSince() {
+            now = Date.now();
+            return (now - startTime) / 1000;
+        }
+        function update() {
+            console.log('what')
+            timeSinc = timeSince();
+            main.innerText = timeSinc;
+
+        }
+        setInterval(update, 20)
+        console.log('hello')
+    </script>
+</body>
+
+</html>
