@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    #f{
+        border: 1px solid black;
+        background: red;
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+        transition: all 1s;
+    }
+    #f.g{
+        opacity: 0;
+    }
+    button{
+        margin: 300px;
+    }
+    </style>
+</head>
+<body>
+    <canvas id="f" width=300 height="300"></canvas>
+    <div>content</div>
+
+    <button onclick="hide()">click</button>
+</body>
+<script>
+function hide(){
+
+    document.getElementById('f').classList.toggle('g')
+}
+
+</script>
+</html>
