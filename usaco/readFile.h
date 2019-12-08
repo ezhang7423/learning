@@ -19,16 +19,13 @@ void printVector(vector<string> &vect){
     for (int i = 0; i < vect.size(); i++) cout << vect[i] << endl;
 }
 
-
-int main() {
+void getData(string fileName){
     ifstream in ("sample.txt");
     string str, file;
     vector<string> data;
     while (getline(in, str)){
         data.push_back(str);
     }
-    printVector(data);
-    return 0;
-}
-
+    // printVector(data);
+};
 
