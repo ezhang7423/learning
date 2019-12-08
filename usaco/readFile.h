@@ -20,7 +20,7 @@ void printVector(vector<string> &vect){
 }
 
 vector<string> getDataN(string fileName){
-    ifstream in ("sample.txt");
+    ifstream in (fileName);
     string str;
     vector<string> data;
     while (getline(in, str)){
@@ -32,7 +32,7 @@ vector<string> getDataN(string fileName){
 
 
 vector<string> getDataS(string fileName){
-    ifstream in ("sample.txt");
+    ifstream in (fileName);
     string str;
     vector<string> data;
     while (in){
