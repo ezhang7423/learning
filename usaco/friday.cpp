@@ -10,32 +10,60 @@ LANG: C++
 using namespace std;
 
 int monthToDays(bool currentlyLeap, int month){
-    if (currentlyLeap) int days[] =  {0,31,60,91,121,152,182,213,244,274,305,335}
-    else int days[] = {0,31,59,90,120,151,181,212,243,273,304,334};
+    int days[12];
+    if (!currentlyLeap){
+        days[0] =0;
+        days[1] =31;
+        days[2] =59;
+        days[3] =90;
+        days[4] =120;
+        days[5] =151;
+        days[6] =181;
+        days[7] =212;
+        days[8] =243;
+        days[9] =273;
+        days[10]= 304;
+        days[11]= 334;
+    }
+    else{
+        days[0] =0;
+        days[1] =31;
+        days[2] =60;
+        days[3] =91;
+        days[4] =121;
+        days[5] =152;
+        days[6] =182;
+        days[7] =213;
+        days[8] =244;
+        days[9] =274;
+        days[10]= 305;
+        days[11]= 335;
+    }
     return days[month];
 }
 
 bool currentlyLeap(int yearsPassed){
-    year = 1900 + yearsPassed - 1
-    if (year % 400 == 0) return true
+    int year = 1900 + yearsPassed;
+    if (year % 400 == 0) return true;
     if (year % 4 == 0 && year % 100 != 0){
-        return true
+        return true;
     }
-    else return false
+    else return false;
 }
 
 int amtOfLeaps(int yearsPassed){
-    ans = 0;
-    for (int i = 1; i <= yearsPassed; i++){
+    int ans = 0;
+    for (int i = 1; i < yearsPassed; i++){
         if (currentlyLeap(i)) ans++;
     }
     return ans;
 }
 int calcDay(int yearsPassed, int month){
-    day = 0;
-    leapYears = amtOfLeaps(yearsPassed)
+    int days = 0;
+    int leapYears = amtOfLeaps(yearsPassed);
     days +=  leapYears * 366;
     days += ( yearsPassed - leapYears )* 365;
+    cout << days << endl;
     days += monthToDays(currentlyLeap(yearsPassed), month);
     days += 13;
     return days;
@@ -46,17 +74,24 @@ int main() {
     ofstream fout ("friday.out");
     ifstream fin ("friday.in");
     int amtOfYears;
-    int ans[] = {0, 0, 0, 0, 0, 0, 0}
+    int ans[] = {0, 0, 0, 0, 0, 0, 0};
     fin >> amtOfYears;
     for (int i = 0; i < amtOfYears; i++){
-        for (int j = 0; j < 13; j++){
-            (calcDay(i, j) % 7 == 0) ? ans[6]++ : ans[calcDay(i, j) % 7 - 1];
+        for (int j = 0; j < 12; j++){
+                int index = (calcDay(i, j) + 1 ) % 7;
+                // cout << "month: " << j + 1<< " day: " << index << endl << endl;
+                ans[index]++;
         }
     }
-    for (int i = 0; i < 7; i++){
+        // for (int j = 0; j < 12; j++){
+        //         int index = (calcDay(600, j) + 1 ) % 7;
+        //         cout << "month: " << j + 1<< " day: " << index << endl << endl;
+        //         ans[index]++;
+        // }
+    for (int i = 0; i < 6; i++){
         fout << ans[i] << " ";
     }
-    fout << endl;
+    fout << ans[6] << endl;
     return 0;
 }
 
@@ -131,4 +166,4 @@ days = 366
 
 eg. month = 12 a
 check which month, then 30 or 31 days
-
+*/
