@@ -1,6 +1,7 @@
 #include "readFile.h"
 
 int main(){
-    vector<string> x = getDataN("sample.txt");
+    vector<string> x = getDataS("sample.txt");
     printVector(x);
+    
 }

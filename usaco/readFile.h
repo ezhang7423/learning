@@ -21,7 +21,7 @@ void printVector(vector<string> &vect){
 
 vector<string> getDataN(string fileName){
     ifstream in ("sample.txt");
-    string str, file;
+    string str;
     vector<string> data;
     while (getline(in, str)){
         data.push_back(str);
@@ -29,4 +29,17 @@ vector<string> getDataN(string fileName){
     return data;
     // printVector(data);
 };
+
+
+vector<string> getDataS(string fileName){
+    ifstream in ("sample.txt");
+    string str;
+    vector<string> data;
+    while (in){
+        in >> str;
+        data.push_back(str);
+    }
+    data.pop_back();
+    return data;
+}
 
