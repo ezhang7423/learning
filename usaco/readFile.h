@@ -24,6 +24,8 @@ vector<string> getDataN(string fileName){
     string str;
     vector<string> data;
     while (getline(in, str)){
+        if (str[str.length()-1] == ' ')
+            str.pop_back();
         data.push_back(str);
     }
     return data;
@@ -37,6 +39,8 @@ vector<string> getDataS(string fileName){
     vector<string> data;
     while (in){
         in >> str;
+        if (str[str.length()-1] == ' ')
+            str.pop_back();
         data.push_back(str);
     }
     data.pop_back();
