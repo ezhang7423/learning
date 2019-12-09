@@ -1,3 +1,9 @@
+'''
+TASK: futzipe1
+LANG: PYTHON3
+PROB: beads
+'''
+
 import math
 data = open('beads.in', 'r')
 index, s = data.read().split('\n')
