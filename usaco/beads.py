@@ -1,7 +1,7 @@
 import math
 data = open('beads.in', 'r')
 index, s = data.read().split('\n')
-
+index = int(index)
 
 def findValues(up, index):
     value = 1
@@ -21,7 +21,7 @@ def findValues(up, index):
 
 maxe = 0
 coolString = s * 3
-initValue = s[index]
+initValue = coolString[index]
 
 for ite in range(index, 2 * index):
     lVal = findValues(1, ite)
@@ -30,7 +30,7 @@ for ite in range(index, 2 * index):
     if (cVal > maxe):
         maxe = cVal
 
-if (max > index):
+if (maxe > index):
   print(index)
 else:
   print(maxe)
