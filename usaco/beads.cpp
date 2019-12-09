@@ -1,67 +1,85 @@
 /*
 ID: futzipe1
-TASK: test
+TASK: beads
 LANG: C++                 
 */
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
-catchSpecialCase();
-int strL = string.length();
-int max = 0;
-int index = strL / 2;
-coolString = s + s;
-iterationRange = coolString(strL / 2, strL);
+ofstream fout("beads.out");
+ifstream fin("beads.in");
+int strL;
+string s;
+int maxe;
+int index;
+string coolString;
 
-findValues(bool left, index)
+int findValues(int up, int index)
 {
     int value = 1, iteration = 0;
     char initValue = coolString[index];
+    cout << "initValue: " << initValue << " ";
     int tIndex = index;
-    if (left)
     {
-        while (initValue == 'w'))
-            {
-                initValue = coolString[tIndex - 1] tIndex--;
-            }
-        while (coolString[index - 1] == initValue || coolString[index - 1] == 'w' && iteration < strL / 2)
+        while (initValue == 'w')
         {
+            initValue = coolString[tIndex + up];
+            tIndex += up;
+        }
+        while (coolString[index + up] == initValue || coolString[index + up] == 'w' && iteration < strL / 2)
+        {
+            cout << coolString[index + up];
             value++;
-            index--;
+            index += up;
             iteration++;
         }
-        return value;
-    }
-    else
-    {
-        while (initValue == 'w'))
-            {
-                initValue = coolString[tIndex + 1] tIndex++;
-            }
-        while (coolString[index + 1] == initValue || coolString[index + 1] == 'w' && iteration < strL / 2)
-        {
-            value++;
-            index++;
-            iteration++;
-        }
+        cout << endl;
         return value;
     }
 }
 
 int main()
 {
-    for (char c : string iterationRange)
+    fin >> strL >> s;
+    maxe = 0;
+    index = strL;
+    coolString = s + s + s;
+    char initValue = s[index];
+    bool special = false;
+    int iter = 1;
+    // while (iter < strL)
+    // {
+    //     if (s[iter] == initValue && iter == strL - 1)
+    //     {
+    //         special = true;
+    //         break;
+    //     }
+    //     iter++;
+    // }
+    // if (special)
+    // {
+    //     fout << strL << endl;
+    //     return 0;
+    // }
+    for (; index < 2 * strL; index++)
     {
-        lValue = findValues(left, index);
-        rValue = findValues(right, index);
-        cValue = lValue + rValue;
-        if (cValue > max)
-            max = cValue;
+        int lValue = findValues(1, index);
+        cout
+            << index << "lvalue: " << lValue << endl;
+        int rValue = findValues(-1, index);
+        cout << endl
+             << "rValue: " << rValue << endl;
+        int cValue = lValue + rValue;
+        if (cValue > maxe)
+            maxe = cValue;
     }
-
-    return max;
+    if (maxe > strL)
+        fout << strL << endl;
+    else
+        fout << maxe << endl;
+    return 0;
 }
-
