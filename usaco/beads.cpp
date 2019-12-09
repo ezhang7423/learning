@@ -9,6 +9,13 @@ LANG: C++
 
 using namespace std;
 
+catchSpecialCase();
+int strL = string.length();
+int max = 0;
+int index = strL / 2;
+coolString = s + s;
+iterationRange = coolString(strL / 2, strL);
+
 findValues(bool left, index)
 {
     int value = 1, iteration = 0;
@@ -46,33 +53,15 @@ findValues(bool left, index)
 
 int main()
 {
-    catchSpecialCase()
-
-        int max = 0 int index,
-            lINdex, rIndex;
-
-    coolString = s + s;
-    strL = string.length();
-    iterationRange = coolString(strL / 2, strL)
-
-                             stop conditions : 1. if the color is not white and
-                         the color is no longer the same 2. if iteration has gone to 1 / 2 string length or
-                     end of string
-
-                                 start at
-                                     stringlength /
-                             2 and
-                         go to stringlength * 1.5
-
-                             for (char c : string iterationRange)
+    for (char c : string iterationRange)
     {
-        lValue = findValues(left, index)
-            rValue = findValues(right, index)
-                cValue = lValue + rValue if (cValue > max) max = cValue
+        lValue = findValues(left, index);
+        rValue = findValues(right, index);
+        cValue = lValue + rValue;
+        if (cValue > max)
+            max = cValue;
     }
 
     return max;
 }
-
-/*
 
