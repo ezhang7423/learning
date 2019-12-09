@@ -29,12 +29,7 @@ bool currentlyLeap(int yearsPassed)
     int year = 1900 + yearsPassed;
     if (year % 400 == 0)
         return true;
-    if (year % 4 == 0 && year % 100 != 0)
-    {
-        return true;
-    }
-    else
-        return false;
+    return (year % 4 == 0 && year % 100 != 0);
 }
 
 int amtOfLeaps(int yearsPassed)
