@@ -8,12 +8,6 @@ data = open('beads.in', 'r')
 index, s = data.read().split('\n')
 index = int(index)
 
-
-def printCurrentIndex(index):
-  print(coolString)
-  print(" "*index + '^')
-
-
 def findValues(up, index):
     value = 1
     iteration = 0
@@ -27,8 +21,6 @@ def findValues(up, index):
         tIndex += up
     while (coolString[index] == initValue or coolString[index] == 'w'
            and iteration < math.floor(index)):
-        printCurrentIndex(index)
-        print(initValue, value)
         value += 1
         index += up
         iteration += 1
@@ -45,10 +37,12 @@ for ite in range(index, 2 * index):
     cVal = lVal + rVal -2
     if (cVal > maxe):
         maxe = cVal
-    print('total value: ', cVal)
-    print('-------------------')
+
+f = open("demofile2.txt", "w")
 
 if (maxe > index):
-  print(index)
+    f.write(index+"\n")
+    f.close()
 else:
-  print(maxe)
+    f.write(maxe+"\n")
+    f.close()
