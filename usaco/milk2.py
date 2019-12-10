@@ -1,12 +1,8 @@
 
-# find minValue
-# find maxValue
-# longestMilking = maxValue - minValue
+def firstVal(item):
+    return item[0]
 
-# sort the times by first value
-# delete a time if its last value < last value of last time
-# created mergedTimes:
-
+liste = sorted(liste, key=firstVal)
 
 
 def mergedTimes(liste):
@@ -24,17 +20,24 @@ def mergedTimes(liste):
         lastIndex = currentIndex - 1
     return newList
 
-
-
 def invMax(liste):
     liste.insertFront([0, 0])
-    max = 0
+    maxe = 0
     for x in range(1, len(list)):
         inVal = list[x][0] - list[x-1][1]
-        if inVal > max:
-            max = inVal
-    return max
+        if inVal > maxe:
+            maxe = inVal
+    return maxe
 
+def regMax(liste):
+    maxe = 0
+    for x in range(0, len(list)):
+        if liste[x][1] - liste[x][0] > maxe:
+            maxe = liste[x][1] - liste[x][0]
+    return maxe
+    
+minVal = invMax(mergedTimes(liste))
+maxVal = regMax(mergedTimes(liste))
 
 fout.write(longestMilking, max)
 
