@@ -1,7 +1,7 @@
 """
 ID: your_id_here
 LANG: PYTHON3
-TASK: test
+TASK: milk2
 """
 
 def firstVal(item):
@@ -43,7 +43,7 @@ def invMax(liste):
 
 def regMax(liste):
     maxe = 0
-    for x in range(0, len(liste)):
+    for x in range(1, len(liste)):
         if liste[x][1] - liste[x][0] > maxe:
             maxe = liste[x][1] - liste[x][0]
     return maxe
@@ -51,17 +51,17 @@ def regMax(liste):
 
 
 
-with open("test.out", 'w') as out, open("test.in", 'r', encoding='utf-8') as fin:
+with open("milk2.out", 'w') as out, open("milk2.in", 'r', encoding='utf-8') as fin:
     lines = fin.readlines()
     liste = []
-    for x in range(len(lines[0])+1):
+    for x in range(int(lines[0])):
         liste.append(lines[x+1])
     for x in range(len(liste)):
         liste[x] = liste[x].split(' ')
         for y in range(2):
             liste[x][y] = int(liste[x][y])
     liste = sorted(liste, key=firstVal)   
-    print(liste)     
     minVal = invMax(mergedTimes(liste))
-    maxVal = regMax(mergedTimes(liste))
+    print(liste)
+    maxVal = regMax(mergedTimes(liste)) - liste[1][0]
     out.write(str(minVal)+ " " +str(maxVal)+"\n")
