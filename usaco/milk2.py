@@ -12,10 +12,13 @@ def mergedTimes(liste):
     currentIndex = 1
     lastIndex = 0
     while currentIndex < len(liste):
-        while liste[currentIndex][0] < liste[lastIndex][1]:
+        while currentIndex < len(liste) and liste[currentIndex][0] <= liste[lastIndex][1]:
             currentIndex += 1
         if (currentIndex != lastIndex + 1):
-            liste.insert(lastIndex, [liste[lastIndex][0], liste[currentIndex - 1][1] ])
+            if liste[currentIndex - 1][1] >= liste[lastIndex][1]:
+                liste.insert(lastIndex, [liste[lastIndex][0], liste[currentIndex - 1][1] ])
+            else:
+                liste.insert(lastIndex, [liste[lastIndex][0], liste[lastIndex][1] ])
             del liste[lastIndex+1:currentIndex+1]
         else:
             currentIndex+= 1
@@ -33,7 +36,6 @@ def mergedTimes(liste):
     return liste
 
 def invMax(liste):
-    liste.insert(0, ([0, 0]))
     maxe = 0
     for x in range(1, len(liste)):
         inVal = liste[x][0] - liste[x-1][1]
@@ -43,11 +45,10 @@ def invMax(liste):
 
 def regMax(liste):
     maxe = 0
-    for x in range(1, len(liste)):
+    for x in range(0, len(liste)):
         if liste[x][1] - liste[x][0] > maxe:
             maxe = liste[x][1] - liste[x][0]
     return maxe
-
 
 
 
@@ -61,7 +62,8 @@ with open("milk2.out", 'w') as out, open("milk2.in", 'r', encoding='utf-8') as f
         for y in range(2):
             liste[x][y] = int(liste[x][y])
     liste = sorted(liste, key=firstVal)   
-    minVal = invMax(mergedTimes(liste))
-    print(liste)
-    maxVal = regMax(mergedTimes(liste)) - liste[1][0]
-    out.write(str(minVal)+ " " +str(maxVal)+"\n")
+    merged = mergedTimes(liste)
+    minVal = invMax(merged)
+    print(regMax(merged))
+    maxVal = regMax(merged)
+    out.write(str(maxVal)+ " " +str(minVal)+"\n")
