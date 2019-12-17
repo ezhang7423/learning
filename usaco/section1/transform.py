@@ -16,7 +16,7 @@ def compare(fM, sM):
                 return False
     return True
 
-    
+
 def one(oM, nM):
     tM = createNew(len(oM))
     for x in range(len(oM)):
@@ -29,7 +29,7 @@ def two(oM, nM):
     tM = createNew(len(oM))
     for x in range(len(oM)):
         for y in range(len(oM)):
-            a[y][x] = oM[x][y]
+            a[len(oM)-x-1][len(oM)-1-y] = oM[x][y]
     return compare(tM, nM)
 
 
@@ -37,7 +37,7 @@ def three(oM, nM):
     tM = createNew(len(oM))
     for x in range(len(oM)):
         for y in range(len(oM)):
-            a[y][x] = oM[x][y]
+            a[len(oM)-1-y][x] = oM[x][y]
     return compare(tM, nM)
 
 
@@ -45,7 +45,7 @@ def four(oM, nM):
     M = createNew(len(oM))
     for x in range(len(oM)):
         for y in range(len(oM)):
-            a[y][x] = oM[x][y]
+            a[x][len(oM)-1-y] = oM[x][y]
     return compare(tM, nM)
 
 def five(oM, nM):
