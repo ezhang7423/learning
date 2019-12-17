@@ -21,7 +21,7 @@ def one(oM, nM):
     tM = createNew(len(oM))
     for x in range(len(oM)):
         for y in range(len(oM)):
-            a[y][x] = oM[x][y]
+            tM[y][x] = oM[x][y]
     return compare(tM, nM)
 
 
@@ -29,7 +29,7 @@ def two(oM, nM):
     tM = createNew(len(oM))
     for x in range(len(oM)):
         for y in range(len(oM)):
-            a[len(oM)-x-1][len(oM)-1-y] = oM[x][y]
+            tM[len(oM)-x-1][len(oM)-1-y] = oM[x][y]
     return compare(tM, nM)
 
 
@@ -37,23 +37,23 @@ def three(oM, nM):
     tM = createNew(len(oM))
     for x in range(len(oM)):
         for y in range(len(oM)):
-            a[len(oM)-1-y][x] = oM[x][y]
+            tM[len(oM)-1-y][x] = oM[x][y]
     return compare(tM, nM)
 
 
 def four(oM, nM):
-    M = createNew(len(oM))
+    tM = createNew(len(oM))
     for x in range(len(oM)):
         for y in range(len(oM)):
-            a[x][len(oM)-1-y] = oM[x][y]
+            tM[x][len(oM)-1-y] = oM[x][y]
     return compare(tM, nM)
 
 def five(oM, nM):
-    nM = four(oM, nM)
-    if check(nM, half):
+    tM = four(oM, nM)
+    if check(tM, nM, True):
          return True
 
-def check(matrix, half):
+def check(oM, nM, half):
     if half:
         if one(oM, nM):
             return '1'
@@ -69,12 +69,12 @@ def check(matrix, half):
         if two(oM, nM):
             return '2'
         if three(oM, nM):
-            return '3''
+            return '3'
         if four(oM, nM):
             return '4'
         if five(oM, nM):
             return '5'
-        if same(oM, nM):
+        if compare(oM, nM):
             return '6'
         return '7'
 
@@ -105,6 +105,6 @@ with open("transform.out", 'w') as out, open("transform.in", 'r', encoding='utf-
             bMatrix.append(list(lines[i]))
         bMatrix = prettify(bMatrix)
         aMatrix = prettify(aMatrix)
-        ans = check()
+        ans = check(bMatrix, aMatrix, False)
         print(ans)
         # out.write(ans)
