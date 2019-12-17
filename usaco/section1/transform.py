@@ -6,7 +6,7 @@ TASK: transform
 def prettify(matrix):
     for x in range(len(matrix)):
         for y in range(len(matrix)):
-            if matrix[x][y] = '@':
+            if matrix[x][y] == '@':
                 matrix[x][y] = 'X'
             else:
                 matrix[x][y] = 'O'
@@ -21,6 +21,10 @@ with open("transform.out", 'w') as out, open("transform.in", 'r', encoding='utf-
         for i, x in enumerate(lines):
             lines[i] = (x.strip('\n'))
         
-        lines = lines.pop(0)
-        lines = prettify(matrix)            
+        lines = lines[1:]
+        bMatrix = []
+        for i in range(int(len(lines)/2)):
+            bMatrix.append(list(lines[i]))
+        bMatrix = prettify(bMatrix)
+        mp(bMatrix)            
         # out.write(str(lines))
