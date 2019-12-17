@@ -5,8 +5,11 @@ TASK: transform
 """
 
 def createNew(lines):
-    newL = [0 for x in range(lines)]
-    newM = [newL for x in range(lines)]
+    newM = []
+    for x in range(lines):
+        newM.append([])
+        for y in range(lines):
+            newM[x].append(0)
     return newM
 
 def compare(fM, sM):
@@ -21,7 +24,9 @@ def one(oM, nM):
     tM = createNew(len(oM))
     for x in range(len(oM)):
         for y in range(len(oM)):
-            tM[y][x] = oM[x][y]
+            tM[y][len(oM)-1-x] = oM[x][y]
+    mp(oM)
+    mp(tM)
     return compare(tM, nM)
 
 
@@ -49,7 +54,10 @@ def four(oM, nM):
     return compare(tM, nM)
 
 def five(oM, nM):
-    tM = four(oM, nM)
+    tM = createNew(len(oM))
+    for x in range(len(oM)):
+        for y in range(len(oM)):
+            tM[x][len(oM)-1-y] = oM[x][y]
     if check(tM, nM, True):
          return True
 
@@ -90,6 +98,7 @@ def prettify(matrix):
 def mp(matrix):
     for x in range(len(matrix)):
         print(matrix[x])
+    print('\n')
 
 
 with open("transform.out", 'w') as out, open("transform.in", 'r', encoding='utf-8') as fin:
@@ -105,6 +114,7 @@ with open("transform.out", 'w') as out, open("transform.in", 'r', encoding='utf-
             bMatrix.append(list(lines[i]))
         bMatrix = prettify(bMatrix)
         aMatrix = prettify(aMatrix)
+
         ans = check(bMatrix, aMatrix, False)
         print(ans)
-        # out.write(ans)
+        out.write(ans)
