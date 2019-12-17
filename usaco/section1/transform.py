@@ -3,42 +3,78 @@ ID: futzipe1
 LANG: PYTHON3
 TASK: transform
 """
-def one(matrix):
-    pass
 
-def two(matrix):
-    pass
-def three(matrix):
-    pass
-def four(matrix):
-    pass
-def five(matrix):
-    nM = four(matrix)
+def createNew(lines):
+    newL = [0 for x in range(lines)]
+    newM = [newL for x in range(lines)]
+    return newM
+
+def compare(fM, sM):
+    for x in range(len(fM)):
+        for y in range(len(fM)):
+            if fM[x][y] != sM[x][y]:
+                return False
+    return True
+
+    
+def one(oM, nM):
+    tM = createNew(len(oM))
+    for x in range(len(oM)):
+        for y in range(len(oM)):
+            a[y][x] = oM[x][y]
+    return compare(tM, nM)
+
+
+def two(oM, nM):
+    tM = createNew(len(oM))
+    for x in range(len(oM)):
+        for y in range(len(oM)):
+            a[y][x] = oM[x][y]
+    return compare(tM, nM)
+
+
+def three(oM, nM):
+    tM = createNew(len(oM))
+    for x in range(len(oM)):
+        for y in range(len(oM)):
+            a[y][x] = oM[x][y]
+    return compare(tM, nM)
+
+
+def four(oM, nM):
+    M = createNew(len(oM))
+    for x in range(len(oM)):
+        for y in range(len(oM)):
+            a[y][x] = oM[x][y]
+    return compare(tM, nM)
+
+def five(oM, nM):
+    nM = four(oM, nM)
     if check(nM, half):
          return True
 
 def check(matrix, half):
     if half:
-        if one(matrix):
+        if one(oM, nM):
             return '1'
-        if two(matrix):
+        if two(oM, nM):
             return '2'
-        if three(matrix):
+        if three(oM, nM):
             return '3'
         else:
             return False
     else:
-        if one(matrix):
+        if one(oM, nM):
             return '1'
-        if two(matrix):
+        if two(oM, nM):
             return '2'
-        if three(matrix):
+        if three(oM, nM):
             return '3''
-        if four(matrix):
+        if four(oM, nM):
             return '4'
-        if five(matrix):
+        if five(oM, nM):
             return '5'
-        if same(matrix):
+        if same(oM, nM):
             return '6'
         return '7'
 
