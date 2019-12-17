@@ -7,34 +7,23 @@ import os
 def firstVal(item):
     return item[0]
 
-
-
 def mergedTimes(liste):
-    currentIndex = 1
-    lastIndex = 0
-    while currentIndex < len(liste):
-        while currentIndex < len(liste) and liste[currentIndex][0] <= liste[lastIndex][1]:
-            currentIndex += 1
-        if (currentIndex != lastIndex + 1):
-            if liste[currentIndex - 1][1] >= liste[lastIndex][1]:
-                liste.insert(lastIndex, [liste[lastIndex][0], liste[currentIndex - 1][1] ])
-            else:
-                liste.insert(lastIndex, [liste[lastIndex][0], liste[lastIndex][1] ])
-            del liste[lastIndex+1:currentIndex+1]
+    newList = []
+    i = 1
+    j = 0
+    while i <= len(liste):
+        max = liste[i-1][1]
+        while i < len(liste) and liste[i][0] <= max:
+            if (liste[i][1] > max):
+                max = liste[i][1]
+            i += 1
+        if (i != j + 1):
+            newList.append([liste[j][0], max])
         else:
-            currentIndex+= 1
-            lastIndex += 1
-        # newThing = []
-        # newThing.append(liste[lastIndex][0])
-        # print(liste[currentIndex][0] <  liste[lastIndex][0])
-        # while liste[currentIndex][0] < liste[lastIndex][1]:
-        #     newThing.append(liste[currentIndex][1])
-        #     currentIndex += 1
-        # newList.append(newThing)
-        # if currentIndex == lastIndex + 1:
-        #     currentIndex += 1
-        # lastIndex = currentIndex - 1
-    return liste
+            newList.append(liste[j])
+        j = i
+        i += 1
+    return newList
 
 def invMax(liste):
     maxe = 0
@@ -42,6 +31,7 @@ def invMax(liste):
         inVal = liste[x][0] - liste[x-1][1]
         if inVal > maxe:
             maxe = inVal
+
     return maxe
 
 def regMax(liste):
@@ -65,7 +55,6 @@ with open("milk2.out", 'w') as out, open("milk2.in", 'r') as fin:
     liste = sorted(liste, key=firstVal)   
     merged = mergedTimes(liste)
     minVal = invMax(merged)
-    print(regMax(merged))
     maxVal = regMax(merged)
     out.write(str(maxVal)+ " " +str(minVal)+"\n")
 
