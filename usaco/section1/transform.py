@@ -27,6 +27,8 @@ def one(oM, nM):
             tM[y][len(oM)-1-x] = oM[x][y]
     mp(oM)
     mp(tM)
+    mp(oM)
+    mp(tM)
     return compare(tM, nM)
 
 
@@ -35,6 +37,8 @@ def two(oM, nM):
     for x in range(len(oM)):
         for y in range(len(oM)):
             tM[len(oM)-x-1][len(oM)-1-y] = oM[x][y]
+    mp(oM)
+    mp(tM)
     return compare(tM, nM)
 
 
@@ -43,6 +47,8 @@ def three(oM, nM):
     for x in range(len(oM)):
         for y in range(len(oM)):
             tM[len(oM)-1-y][x] = oM[x][y]
+    mp(oM)
+    mp(tM)
     return compare(tM, nM)
 
 
@@ -51,6 +57,8 @@ def four(oM, nM):
     for x in range(len(oM)):
         for y in range(len(oM)):
             tM[x][len(oM)-1-y] = oM[x][y]
+    mp(oM)
+    mp(tM)
     return compare(tM, nM)
 
 def five(oM, nM):
@@ -117,4 +125,4 @@ with open("transform.out", 'w') as out, open("transform.in", 'r', encoding='utf-
 
         ans = check(bMatrix, aMatrix, False)
         print(ans)
-        out.write(ans)
+        out.write(ans+'\n')
