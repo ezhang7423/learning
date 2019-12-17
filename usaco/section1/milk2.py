@@ -3,24 +3,29 @@ ID: your_id_here
 LANG: PYTHON3
 TASK: milk2
 """
+import os
+def firstVal(item):
+    return item[0]
 
-with open("milk2.out", 'w') as out, open("milk2.in", 'r', encoding='utf-8') as fin:
-    lines = fin.readlines()
-    liste = []
-    for x in range(int(lines[0])):
-        liste.append(lines[x+1])
-    for x in range(len(liste)):
-        liste[x] = liste[x].split(' ')
-        for y in range(2):
-            liste[x][y] = int(liste[x][y])
-    liste = sorted(liste, key=firstVal)   
-    merged = mergedTimes(liste)
-    minVal = invMax(merged)
-    print(regMax(merged))
-    maxVal = regMax(merged)
-    out.write(str(maxVal)+ " " +str(minVal)+"\n")
-# def firstVal(item):
-#     return item[0]
+
+hi = open(os.getcwd()+"\milk2.in", 'r')
+# with open("milk2.out", 'w') as out, open("milk2.in", 'r') as fin:
+#     lines = fin.readlines()
+#     liste = []
+#     for x in range(int(lines[0])):
+#         liste.append(lines[x+1])
+#     for x in range(len(liste)):
+#         liste[x] = liste[x].split(' ')
+#         for y in range(2):
+#             liste[x][y] = int(liste[x][y])
+#     liste = sorted(liste, key=firstVal)   
+#     print(liste)
+    # merged = mergedTimes(liste)
+    # minVal = invMax(merged)
+    # print(regMax(merged))
+    # maxVal = regMax(merged)
+    # out.write(str(maxVal)+ " " +str(minVal)+"\n")
+
 
 
 # def mergedTimes(liste):
