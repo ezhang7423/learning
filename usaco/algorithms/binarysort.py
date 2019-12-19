@@ -59,6 +59,11 @@ def insertionSort(array):
     print(array)
     return array
 
+def maxSub(array):
+    pass
+
+def selectionSort(array):
+    pass
 
 def unitTesting(which):
     if which == 'ms':
