@@ -59,9 +59,6 @@ def insertionSort(array):
     print(array)
     return array
 
-def maxSub(array):
-    pass
-
 def selectionSort(array):
     for x in range(len(array)):
         max = array[x]
@@ -70,6 +67,8 @@ def selectionSort(array):
                 max = array[y]
                 array[x], array[y] = array[y], array[x]
     return array
+
+    
 def unitTesting(which):
     if which == 'ms':
         unsorted = [6, 5, 7, 8, 4, 3, 2]
