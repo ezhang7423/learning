@@ -50,8 +50,18 @@ def binarySearch(array, value, l, h):
     else:
         return binarySearch(array, value, l, middle)
 
-unsorted = [6, 5, 7, 8, 4, 3, 2]
-sort = mergesort(unsorted)
 
-indexOf8 = binarySearch(sort, 2, 0, len(sort) - 1)
-print(indexOf8)
+
+
+def unitTesting(which):
+    if which == 'ms':
+        unsorted = [6, 5, 7, 8, 4, 3, 2]
+        sort = mergesort(unsorted)
+        assert sort == [2, 3, 4, 5, 6, 7, 8]
+        print('passed')
+    elif which == 'bs':
+        unsorted = [6, 5, 7, 8, 4, 3, 2]
+        sort = mergesort(unsorted)
+        indexOf8 = binarySearch(sort, 8, 0, len(sort) - 1)
+        assert indexOf8 == 6
+        print('passed')
