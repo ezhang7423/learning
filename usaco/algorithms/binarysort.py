@@ -2,6 +2,9 @@
 import math
 import time
 
+
+# helper functions
+
 def combine(a1, a2):
     a1.append('STOP')
     a2.append('STOP')
@@ -22,18 +25,16 @@ def combine(a1, a2):
             newL.append(a1[i])
             i += 1
     return newL
-
+    
+    
+#actual functions
 def mergesort(array):
     high = len(array)
     if ( 1 == high):
         return array
-        
     middle = math.floor(high / 2)
-
-    
     l = mergesort(array[:middle])
     u = mergesort(array[middle:])
-
     return combine(l, u)
 
 unsorted = [6, 5, 7, 8, 4, 3, 2, 1]
