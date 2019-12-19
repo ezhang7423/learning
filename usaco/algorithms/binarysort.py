@@ -23,19 +23,20 @@ def combine(a1, a2):
             i += 1
     return newL
 
-# def mergesort(array, low, high):
-#     if ( low >= high):
-#         return array
+def mergesort(array):
+    high = len(array)
+    if ( 1 == high):
+        return array
+        
+    middle = math.floor(high / 2)
+
+    
+    l = mergesort(array[:middle])
+    u = mergesort(array[middle:])
+
+    return combine(l, u)
+
+unsorted = [6, 5, 7, 8, 4, 3, 2, 1]
 
 
-#     middle = math.floor((high - low) / 2)
-#     print(('middle', middle))
-
-#     l = mergesort(lowER)
-#     u = mergesort(upper)
-#     return combine(l, u)
-
-
-unsorted = [5, 4, 6, 7]
-s = [2, 5, 6, 100]
-print(combine(unsorted, s))
+print(mergesort(unsorted))
