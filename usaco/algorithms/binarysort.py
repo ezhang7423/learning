@@ -39,5 +39,4 @@ def mergesort(array):
 unsorted = [6, 5, 7, 8, 4, 3, 2, 1]
 
 
-
 print(mergesort(unsorted))
