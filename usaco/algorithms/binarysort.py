@@ -25,7 +25,7 @@ def combine(a1, a2):
             newL.append(a1[i])
             i += 1
     return newL
-    
+
     
 #actual functions
 def mergesort(array):
@@ -37,7 +37,21 @@ def mergesort(array):
     u = mergesort(array[middle:])
     return combine(l, u)
 
-unsorted = [6, 5, 7, 8, 4, 3, 2, 1]
 
+def binarySearch(array, value, l, h):
+    middle = math.floor( ( h - l ) / 2 ) + l
+    if l >= h:
+        if value == array[middle]:
+            return middle
+        else:
+            return 'not in list'
+    if value > array[middle]:
+        return binarySearch(array, value, middle + 1, h)
+    else:
+        return binarySearch(array, value, l, middle)
 
-print(mergesort(unsorted))
+unsorted = [6, 5, 7, 8, 4, 3, 2]
+sort = mergesort(unsorted)
+
+indexOf8 = binarySearch(sort, 2, 0, len(sort) - 1)
+print(indexOf8)
