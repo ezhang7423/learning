@@ -50,7 +50,14 @@ def binarySearch(array, value, l, h):
     else:
         return binarySearch(array, value, l, middle)
 
-
+def insertionSort(array):
+    for x in range(1, len(array)):
+        i = x
+        while array[i] < array[i-1] and i > 0:
+            array[i], array[i-1] = array[i-1], array[i]
+            i = i - 1
+    print(array)
+    return array
 
 
 def unitTesting(which):
@@ -65,3 +72,10 @@ def unitTesting(which):
         indexOf8 = binarySearch(sort, 8, 0, len(sort) - 1)
         assert indexOf8 == 6
         print('passed')
+    elif which == 'is':
+        unsorted = [6, 5, 7, 8, 4, 3, 2]
+        sort = insertionSort(unsorted)
+        assert sort == [2, 3, 4, 5, 6, 7, 8]
+        print('passed')
+
+unitTesting('is')
