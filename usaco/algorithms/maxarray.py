@@ -68,6 +68,6 @@ def divide(array, l, h):
 
 
 
-test = [10, -2, 9, 3]
+test = [1, -1, 3, 2, -10, 20]
 
-print(divide(test, 0, 3))
+print(divide(test, 0, 5))
