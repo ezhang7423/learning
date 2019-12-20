@@ -16,7 +16,7 @@ def everyPossibility(array):
 
 
 # divide and conquer, o (n log n)
-def biggestCross(array):
+def biggestCross(array, l):
     mid = math.floor(len(array) / 2)
     subTop = 0
     topI = mid - 1
@@ -34,15 +34,15 @@ def biggestCross(array):
         if currentSum > subTop:
             bottomI = x
             subTop = currentSum
-    return (bottomI, topI)
+    return (bottomI + l, topI + l)
 
 
 def compare(first, second, array):
     sum1 = sum2 = 0
-    for x in range(first[0], first[1] + 2):
+    for x in range(first[0], first[1] + 1):
         sum1 += array[x]
-    for x in range(second[0], second[1] + 2):
-        sum2+ += array[x]
+    for x in range(second[0], second[1] + 1):
+        sum2 += array[x]
     if sum1 > sum2:
         return first
     else:
@@ -57,15 +57,10 @@ def divide(array, l, h):
     biggestLower = divide(array, l, mid)
     biggestHigher = divide(array, mid + 1, h)
 
-    biggestMid = biggestCross(array)
+    biggestMid = biggestCross(array[l:h + 1], l)
     ans = compare(biggestMid, biggestHigher, array)
     ans = compare(ans, biggestLower, array)
-    if biggestMid > biggestLower and biggestMid > biggestHigher: 
-        return biggestMid
-    elif biggestHigher > biggestLower:
-        return biggestHigher
-    else:
-        return biggestMid
+    return ans
 
 
 # dynamic, o(n)
