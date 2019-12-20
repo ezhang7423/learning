@@ -62,12 +62,26 @@ def divide(array, l, h):
     ans = compare(ans, biggestLower, array)
     return ans
 
-
+class I:
+    def __init__(self, l, h, sume):
+        self.l = l
+        self.h = h
+        self.sum = sume
 # dynamic, o(n)
+def dynamic(array):
+    maxe = I(0, 0, array[0])
+    maxUpTo = I(0, 0, array[0])
+    for x in range( 1, len(array)):
+        if maxUpTo.sum + array[x] > array[x]:
+            maxUpTo = I(maxUpTo.l, x, maxUpTo.sum + array[x])
+        else:
+            maxUpTo  = I(x, x, array[x])
+        if maxUpTo.sum > maxe.sum:
+            maxe = maxUpTo
+    return (maxe.l, maxe.h)
 
 
 
+test = [1, -10, 20, 1, 1, -9000, 8, 7, 100001]
 
-test = [1, -1, 3, 2, -10, 20]
-
-print(divide(test, 0, 5))
+print(dynamic(test))
