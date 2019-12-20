@@ -37,8 +37,37 @@ def biggestCross(array):
     return (bottomI, topI)
 
 
-def divide(array):
-    pass
+def compare(first, second, array):
+    sum1 = sum2 = 0
+    for x in range(first[0], first[1] + 2):
+        sum1 += array[x]
+    for x in range(second[0], second[1] + 2):
+        sum2+ += array[x]
+    if sum1 > sum2:
+        return first
+    else:
+        return second
+
+def divide(array, l, h):
+    if l == h:
+        return (l, l)
+
+    mid = math.floor((h - l) / 2) + l
+   
+    biggestLower = divide(array, l, mid)
+    biggestHigher = divide(array, mid + 1, h)
+
+    biggestMid = biggestCross(array)
+    ans = compare(biggestMid, biggestHigher, array)
+    ans = compare(ans, biggestLower, array)
+    if biggestMid > biggestLower and biggestMid > biggestHigher: 
+        return biggestMid
+    elif biggestHigher > biggestLower:
+        return biggestHigher
+    else:
+        return biggestMid
+
+
 # dynamic, o(n)
 
 
@@ -46,4 +75,4 @@ def divide(array):
 
 test = [10, -2, 9, 3]
 
-print(biggestCross(test))
+print(divide(test, 0, 3))
