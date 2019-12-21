@@ -16,7 +16,7 @@ with open("namenum.out", 'w') as out, open("namenum.in", 'r', encoding='utf-8') 
         for y in range(int(math.pow(3, x))+2):  # current character
             for z in range(int(math.pow(3, len(lines)-x-1))):  # current index
                 print('x:', x, 'y:', y, 'z:', z)
-                currentIndex = y * math.pow(3, len(lines)-x-1) + z
+                currentIndex = y * math.pow(3, len(lines) - x - 1) + z
                 print(currentIndex)
                 # allP[currentIndex] += mapp[x][y]
 
