@@ -36,7 +36,7 @@ with open("namenum.out", 'w') as out, open("namenum.in", 'r', encoding='utf-8') 
 
 
 """
-
+f
 for creating the list of every possiblity:
 create a customized list of lists based on the number
 24 = [['a', 'b', 'c'], ['g', 'h', 'i']]
