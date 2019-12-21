@@ -3,11 +3,11 @@ ID: futzipe1
 LANG: PYTHON3
 TASK: namenum
 """
-import math
+# import math
 
 
-def toWord(wordMap, number):
-    number = paddNumber(number, len(lines))
+def toWord(number):
+    number = str(number).zfill(len(lines))
     number = list(number)
     ans = ""
     for x in range(len(number)):
@@ -15,8 +15,11 @@ def toWord(wordMap, number):
     return ans
 
 
+with open("numdict.txt", 'r') as fin:
+    allW = fin.read().splitlines()
+
 with open("namenum.out", 'w') as out, open("namenum.in", 'r', encoding='utf-8') as fin:
-    lines = fin.readlines()[0]
+    lines = fin.read.splitlines()[0]
     lines = list(lines)
     mapp = {2: ["A", "B", "C"], 5: ["J", "K", "L"], 8: ["T", "U", "V"], 3: ["D", "E", "F"], 6: [
         "M", "N", "O"], 9: ["W", "X", "Y"], 4: ["G", "H", "I"], 7: ["P", "R", 'S']}
@@ -25,10 +28,11 @@ with open("namenum.out", 'w') as out, open("namenum.in", 'r', encoding='utf-8') 
         lines[x] = int(lines[x])
         wordMap.append(mapp[lines[x]])
     allP = []
-
+    for x in range(3**len(lines)):
+        allP.append(toWord(x))
     allP = set(allP)
 
-    out.write(str(union(allP, allW)))
+    out.write(allP.union(set(allW)))
 
 
 """
@@ -44,5 +48,5 @@ iterate i from 0 to the len(number)^3
 
 find the union of the newlycreated set and the given set
 
-output union or none if len(union) == 0
+output union or none if len(union)k == 0
 """
