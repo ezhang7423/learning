@@ -27,6 +27,7 @@ with open("namenum.out", 'w') as out, open("namenum.in", 'r', encoding='utf-8') 
     for x in range(len(lines)):
         lines[x] = int(lines[x])
         wordMap.append(mapp[lines[x]])
+    print('hi')
     allP = []
     for x in range(3**len(lines)):
         allP.append(toWord(x))
