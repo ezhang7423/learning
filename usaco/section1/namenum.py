@@ -6,12 +6,28 @@ TASK: namenum
 # import math
 
 
+def base10toN(num, base):
+    """Change ``num'' to given base
+    Upto base 36 is supported."""
+
+    converted_string, modstring = "", ""
+    currentnum = num
+    if not num:
+        return '0'
+    while currentnum:
+        mod = currentnum % base
+        currentnum = currentnum // base
+        converted_string = chr(48 + mod + 7*(mod > 10)) + converted_string
+    return converted_string
+
+
 def toWord(number):
-    number = str(number).zfill(len(lines))
+    number = base10toN(number, 3)
+    number = number.zfill(len(lines))
     number = list(number)
     ans = ""
     for x in range(len(number)):
-        ans += wordMap[x][number[x]]
+        ans += wordMap[x][int(number[x])]
     return ans
 
 
@@ -19,7 +35,7 @@ with open("numdict.txt", 'r') as fin:
     allW = fin.read().splitlines()
 
 with open("namenum.out", 'w') as out, open("namenum.in", 'r', encoding='utf-8') as fin:
-    lines = fin.read.splitlines()[0]
+    lines = fin.read().splitlines()[0]
     lines = list(lines)
     mapp = {2: ["A", "B", "C"], 5: ["J", "K", "L"], 8: ["T", "U", "V"], 3: ["D", "E", "F"], 6: [
         "M", "N", "O"], 9: ["W", "X", "Y"], 4: ["G", "H", "I"], 7: ["P", "R", 'S']}
@@ -27,15 +43,17 @@ with open("namenum.out", 'w') as out, open("namenum.in", 'r', encoding='utf-8') 
     for x in range(len(lines)):
         lines[x] = int(lines[x])
         wordMap.append(mapp[lines[x]])
-    print('hi')
     allP = []
     for x in range(3**len(lines)):
         allP.append(toWord(x))
     allP = set(allP)
-
-    out.write(allP.union(set(allW)))
-
-
+    ans = allP.intersection(set(allW))
+    if len(ans) == 0:
+        out.write("NONE")
+    else:
+        ans = sorted(ans)
+        for x in ans:
+            out.write(x)
 """
 f
 for creating the list of every possiblity:
