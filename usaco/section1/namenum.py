@@ -22,14 +22,17 @@ with open("namenum.out", 'w') as out, open("namenum.in", 'r', encoding='utf-8') 
 
 
 """
-finding all possibilities:
-observe that all possibilites should equal 3 ^ len(lines)
-observe that each character of len(lines) will appear 3 ^ (len(lines) - 1)
-therefore, we can iterate across every character of len(lines) excluding the last line with this statement:
-(with x as iterator)
-for x in range(len(lines)-1):
-    for y in range(math.pow(3, x):
-        for z in range(math.pow(3, len(lines)-1)):
-            currentIndex = y*math.pow(3, len(lines)-x) + z
-            allP[currentIndex] = mapp[x][y]
+
+for creating the list of every possiblity:
+create a customized list of lists based on the number
+24 = [['a', 'b', 'c'], ['g', 'h', 'i']]
+
+iterate i from 0 to the len(number)^3
+    current = i base 3
+    current = toWord(lists)
+    ans.append(ans)
+
+find the union of the newlycreated set and the given set
+
+output union or none if len(union) == 0
 """
