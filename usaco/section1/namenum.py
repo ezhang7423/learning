@@ -54,17 +54,20 @@ with open("namenum.out", 'w') as out, open("namenum.in", 'r', encoding='utf-8') 
         allW2 = []
         linlen = len(lines)
         for x in range(len(allW)):
-            if len(allW[x)] == linlen:
+            if len(allW[x]) == linlen:
                 allW2.append(allW[x])
         ans = []
         for x in range(len(allW2)):
-            if inSpace(allW2[x], lines):
+            if inSpace(allW2[x]):
                 ans.append(allW2[x])
-        if len(ans2) != 0:
+        if len(ans) != 0:
             for x in ans:
                 out.write(x+'\n')
+            raise SystemExit(0)
         else:
-            out.write("NONE\N")
+            out.write("NONE\n")
+            raise SystemExit(0)
+
     allP = []
     for x in range(3**len(lines)):
         allP.append(toWord(x))
