@@ -36,6 +36,6 @@ with open("palsquare.out", 'w') as out, open("palsquare.in", 'r', encoding='utf-
         b10x = x ** 2
         tBx = toBase(base, b10x)
         if (isP(str(tBx))):
-            ans.append(str(x) + ' ' + str(b10x) + '\n')
+            ans.append(str(toBase(base, x)) + ' ' + str(tBx) + '\n')
     for x in ans:
         out.write(x)
