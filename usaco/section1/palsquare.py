@@ -15,9 +15,16 @@ def toBase(base, num):
             nP *= base
             index += 1
         vP = math.floor(num/nP)
+        if vP > 9:
+            intToAlph = {10: 'A', 11: 'B', 12: 'C', 13: 'D', 14: 'E',
+                         15: 'F', 16: 'G', 17: 'H', 18: 'I', 19: 'J', 20: 'K', 21: 'L'}
+            vP = intToAlph[vP]
         ans += 10 ** (index) * vP
         num -= vP * base ** index
     return ans
+
+
+toBase(11, 110)
 
 
 def isP(num):
