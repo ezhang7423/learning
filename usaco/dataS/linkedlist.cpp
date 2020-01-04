@@ -1,35 +1,65 @@
 #include <iostream>
-
+#include <cmath>
 using namespace std;
-class intLinked{
+class floatLinked{
     public:
-        intLinked(){
-            head = 0;
-            tail = 0;
-        }
-        intLinked(int data){
-            Node* first = new Node{data, 0};
+        floatLinked(){
+            Node* first = new Node{NAN, 0, 0};
             head = first;
             tail = first;
+            
         }
-        void push(int data){
-            Node* temp = new Node{data, head};
+        // floatLinked(int data[]){
+        //     Node* first = new Node{data, 0};
+        //     head = first;
+        //     tail = first;
+        // }
+        void push(float data){
+            Node* temp = new Node{data, head, 0};
             head = temp;
         }
-        void push_back(int data){
-            Node* temp = new Node{data, 0};
+        void push_back(float data){
+            Node* temp = new Node{data, 0, tail};
             tail -> next = temp;
-            tail = temp;    
+            tail = temp;   
+            
+        }
+        void d(Node* n){
+            if (n -> before) n -> before -> next = n -> next;
+            if (n -> next) n -> next -> before = n -> before;
+            delete n;
+        }
+        void print(){
+            Node* n = head;
+            while (n){
+                if (n -> data != n -> data){
+                    d(n);
+                    n = n -> next;
+                }
+                else {
+                    cout << n -> data << " ";
+                    n = n -> next;
+                }
+            }
+            cout << endl;
         }
     private:
         struct Node{
-            int data;
+            float data;
             Node* next;
+            Node* before;
         };
-        Node* head, tail;
+        Node* head;
+        Node* tail;
+        bool dc = false;
 };
 
 int main(){
-    intLinked th;
-    th.test();
+    floatLinked th;
+    th.push_back(10);
+    th.push(5);
+    th.push(8);
+    th.push(7);
+    th.push(6);
+    th.print();
 }
