@@ -1,6 +1,13 @@
 #include <iostream>
 #include <cmath>
 using namespace std;
+
+struct Node{
+            float data;
+            Node* next;
+            Node* before;
+};
+
 class floatLinked{
     public:
         floatLinked(){
@@ -16,6 +23,7 @@ class floatLinked{
         // }
         void push(float data){
             Node* temp = new Node{data, head, 0};
+            head -> before = temp;
             head = temp;
         }
         void push_back(float data){
@@ -25,8 +33,9 @@ class floatLinked{
             
         }
         void d(Node* n){
-            if (n -> before) n -> before -> next = n -> next;
+            // cout <<( n -> before -> next == n )<< endl;
             if (n -> next) n -> next -> before = n -> before;
+            if (n -> before) n -> before -> next = n -> next;
             delete n;
         }
         void print(){
@@ -35,6 +44,7 @@ class floatLinked{
                 if (n -> data != n -> data){
                     d(n);
                     n = n -> next;
+                    // cout << "yeah boii ";
                 }
                 else {
                     cout << n -> data << " ";
@@ -44,11 +54,6 @@ class floatLinked{
             cout << endl;
         }
     private:
-        struct Node{
-            float data;
-            Node* next;
-            Node* before;
-        };
         Node* head;
         Node* tail;
         bool dc = false;
@@ -56,10 +61,7 @@ class floatLinked{
 
 int main(){
     floatLinked th;
-    th.push_back(10);
+    th.print();
     th.push(5);
-    th.push(8);
-    th.push(7);
-    th.push(6);
     th.print();
 }
