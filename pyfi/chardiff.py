@@ -10,7 +10,7 @@ else:
     else:
         maxe = string2
         other = string1
-    for x in range(len(maxe)):
+    for x in range(len(other)):
         if maxe[x] != other[x]:
             print("at char number", x, "string 1 is", string1[x], "string 2 is", string2[x])
         
