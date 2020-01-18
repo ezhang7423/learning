@@ -31,4 +31,5 @@ with open('photo.in', 'r') as fin, open('photo.out', 'w') as fout:
     inpute = fin.readlines()[1].split(' ')
     data = [int(x) for x in inpute]
     ans = gimmeAns(data)
+    print(ans)
     fout.write(fmtAns(ans[len(ans)-1]))
