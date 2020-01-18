@@ -2,21 +2,14 @@
 using namespace std;
 
 int main(){
-    int *p1;
-int *p2;
-p1 = new int;
-p2 = new int;
-*p1 = 1;
-*p2 = 2;
-cout << *p1 << " and " << *p2 << endl;
-delete p1;
-p1 = p2;
-cout << *p1 << " and " << *p2 << endl;
-*p1 = 3;
-cout << *p1 << " and " << *p2 << endl;
-*p2 = 4;
-cout << *p1 << " and " << *p2 << endl;
-delete p1;
+    int a[10];
+int *p = &a[1];
+int i;
+for (i = 0; i < 10; i++)
+a[i] = i;
+for (i = 0; i < 9; i++)
+cout << p[i] << " ";
+cout << endl;
 }
 
 
