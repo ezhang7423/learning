@@ -1,5 +1,5 @@
 #include <math.h>
-
+#include "poly.h"
 poly::poly(){
     this -> degree = 0;
 }
@@ -7,7 +7,7 @@ poly::poly(){
 poly::poly(const int k, const double inital_coeff[] ){
     this -> degree = k ;
     for (int i = 1; i <= k; i++){
-        this -> data[i] =  this -> inital_coeff[i];
+        this -> data[i] =  inital_coeff[i];
     }
 }
 
@@ -24,7 +24,7 @@ double poly::get(const int k) const{
 
 double poly::evaluate(const double xval) const{
     double ans = 0;
-    for (int i = 1; i <= k; i++){
+    for (int i = 1; i <= this -> degree; i++){
         ans += pow(this -> data[i] * xval, i)
     }
     return ans;
@@ -32,7 +32,8 @@ double poly::evaluate(const double xval) const{
 
 bool operator == (const poly& p1, const poly& p2){
     if (p1.degree() != p2.degree()) return false;
-    for (int i = 1; i <= p1.degree(); i++){
+    int deg = p1.degree();
+    for (int i = 1; i <= deg; i++){
         if (p1.get(i) != p2.get(i)){
             return false;
         }
