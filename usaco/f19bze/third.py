@@ -63,6 +63,8 @@ for x in range(len(swaps2)):
     if not appended:
         unique.append(swaps2[x])
 
+
+ans =
 for x in range(len(unique)):
     chains.append(unique[x])
 print(chains)
